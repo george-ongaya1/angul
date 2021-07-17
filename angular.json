@@ -28,11 +28,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "../node_modules/bootstrap/dist/css/bootstrap.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.css"
             ],
-            "scripts": [ 
-              "../node_modules/jquery/dist/jquery.js",
-              "../node_modules/bootstrap/dist/js/bootstrap.bundle.js"]
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+              "./node_modules/jquery/dist/jquery.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -98,11 +99,39 @@
             ],
             "styles": [
               "src/styles.css"
-              
             ],
-            "scripts": [
-             
-            ]
+            "scripts": []
+          }
+        },
+        "cypress-run": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "project:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "project:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "watch": true,
+            "headless": false
+          }
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "project:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "project:serve:production"
+            }
           }
         }
       }
